@@ -12,10 +12,10 @@ const SideBar = ({ isSidebarOpened }) => {
   return (
     <>
       {isSidebarOpened && (
-        <div className="fixed top-0 left-0 bg-lightbox opacity-70 w-[100%] h-[100%] z-[2] md:hidden"></div>
+        <div className="fixed top-0 left-0 bg-lightbox opacity-70 w-[100%] h-[100%] z-[2] lmd:hidden"></div>
       )}
       <div
-        className={`fixed  ease-in-out duration-500 z-[5]  top-0 left-0  h-[100%] w-[70%]  block bg-white  md:hidden ${
+        className={`fixed   ease-in-out duration-500 z-[5] lmd:hidden  top-0 left-0  h-[100%] w-[70%]  block bg-white   ${
           isSidebarOpened ? "translate-x-0" : "-translate-x-full"
         }`}
       >
