@@ -12,7 +12,7 @@ const Nav = () => {
       </li>
     );
   });
-  console.log(menuItem);
+
   return (
     <>
       <div className="lmd:animate-nav">

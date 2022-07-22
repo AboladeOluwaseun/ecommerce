@@ -7,9 +7,15 @@ import cart from "../../Assets/ecommerce-product-page-main/images/icon-cart.svg"
 import avatar from "../../Assets/ecommerce-product-page-main/images/image-avatar.png";
 import { useState } from "react";
 import logo from "../../Assets/ecommerce-product-page-main/images/logo.svg";
+import { useSelector } from "react-redux";
+import CartItems from "../CartRelated/CartItems";
+
 const Header = () => {
+  const cartItemsCount = useSelector((state) => state.cartState.totalItemCount);
+  const showCounter = useSelector((state) => state.cartState.showCounter);
   const [active, setActive] = useState(false);
   const [isSidebarOpened, setIsSidebarOpened] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const setMenu = () => {
     if (active) {
       setActive(false);
@@ -20,8 +26,12 @@ const Header = () => {
     }
   };
 
+  const showCartHandler = () => {
+    setShowCart(!showCart);
+  };
+
   return (
-    <div className="  container max-w-[90%] py-[0.8rem] md:py-8 mx-auto sm:py-6 flex items-center border-b-slate-400 border-b justify-between">
+    <div className="shadow-[0_5px_0px_-15px_rgba(0,0,0,0.3)] lmd:animate-nav container max-w-[90%] py-[0.8rem] md:py-8 mx-auto sm:py-6 flex items-center border-b-slate-400 border-b justify-between">
       {active ? (
         <div
           onClick={setMenu}
@@ -44,21 +54,27 @@ const Header = () => {
         alt=""
       />
       <SideBar isSidebarOpened={isSidebarOpened}></SideBar>
+      {showCart && <CartItems showCart={showCartHandler}></CartItems>}
       <Nav></Nav>
       <div className=" lmd:animate-profilebounce lmd:hover:animate-profilebounce flex items-center  relative  lg:right-[1rem] md:shrink-0 space-x-5">
-        <div className="relative cursor-pointer">
+        <div
+          onClick={showCartHandler}
+          className="active:scale-125 relative cursor-pointer"
+        >
           {" "}
           <img
-            className="w-[1.4rem] h-[1.4rem] sm:w-[1.7rem] sm:h-[1.7rem]"
+            className=" w-[1.4rem] h-[1.4rem] sm:w-[1.7rem] sm:h-[1.7rem]"
             src={cart}
             alt=""
           />
-          <p className="absolute top-0 left-4 bg-Orange text-white rounded-full px-[0.3rem] text-[0.6rem]">
-            0
-          </p>
+          {showCounter && (
+            <p className="absolute top-0 left-4 bg-Orange text-white rounded-full px-[0.3rem] text-[0.6rem]">
+              {cartItemsCount}
+            </p>
+          )}
         </div>
         <img
-          className="w-6 h-6 sm:w-[1.8rem] sm:h-[1.8rem] rounded-full cursor-pointer border border-solid border-Orange"
+          className="active:scale-125 w-6 h-6 sm:w-[1.8rem] sm:h-[1.8rem] lmd:w-[2.2rem] lmd:h-[2.2rem] rounded-full cursor-pointer border border-solid border-Orange"
           src={avatar}
           alt=""
         />

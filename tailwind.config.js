@@ -2,14 +2,18 @@
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  plugins: [require("tw-elements/dist/plugin")],
   theme: {
     // maxWidth: {
     //   mw: "80%",
     // },
     extend: {
+      gridTemplateRows: {
+        layout: "1fr 3fr 2fr",
+      },
       keyframes: {
         movein: {
-          "0%": { transform: "translate(-100%,)" },
+          "0%": { transform: "translate(-200%, -200%)" },
           "20%": { transform: "translate(-80%, -80%)" },
           "40%": { transform: "translate(-60%, -60%)" },
           "60%": { transform: "translate(-40%, -40%)" },
@@ -17,7 +21,7 @@ module.exports = {
           "100%": { transform: "translate(0%, 0%)" },
         },
         productinfo: {
-          "0%": { transform: "translate(100%,)" },
+          "0%": { transform: "translate(100%, 100%)" },
           "20%": { transform: "translate(80%, 80%)" },
           "40%": { transform: "translate(60%, 60%)" },
           "60%": { transform: "translate(40%, 40%)" },
@@ -33,29 +37,43 @@ module.exports = {
           "100%": { transform: "translate(0% )" },
         },
         profilebounce: {
-          "0%, 100%": {
-            transform: "translateY(-25%)",
-          },
-          "50%": {
-            transform: "translateY(0)",
-          },
+          "0%": { transform: "translate(0,-300%)" },
+          "20%": { transform: "translate(0,0% )" },
+          "40%": { transform: "translate(0,-200% )" },
+          "60%": { transform: "translate(0,0% )" },
+          "80%": { transform: "translate(0,-100% )" },
+          "100%": { transform: "translate(0% 0%)" },
         },
         nav: {
-          "0%": { transform: "translate(0,-100%)" },
+          "0%": { transform: "translate(0,-200%)" },
           "20%": { transform: "translate(0,0% )" },
           "40%": { transform: "translate(0,-60% )" },
           "60%": { transform: "translate(0,0% )" },
           "80%": { transform: "translate(0,-20% )" },
           "100%": { transform: "translate(0% 0%)" },
         },
+        cart: {
+          "0%": { transform: "translate(0,-100%)" },
+          "10%": { transform: "translate(0,0%)" },
+          "20%": { transform: "translate(0,-80% )" },
+          "30%": { transform: "translate(0,0% )" },
+          "40%": { transform: "translate(0,-60% )" },
+          "50%": { transform: "translate(0, 0% )" },
+          "60%": { transform: "translate(0,-40% )" },
+          "70%": { transform: "translate(0,0% )" },
+          "80%": { transform: "translate(0% -20%)" },
+          "90%": { transform: "translate(0% 0%)" },
+          "100%": { transform: "translate(0% -10%)" },
+        },
       },
 
       animation: {
-        movein: "movein 0.8s ease-in 0.6s 1 backwards",
-        productinfo: "productinfo 1.2s ease-in 0.6s 1 backwards",
+        movein: "movein 0.8s ease-in 0.3s 1 backwards",
+        productinfo: "productinfo 1.2s ease-in 0.3s 1 backwards",
         logo: "logo 0.8s ease-in-out 0.6s 1 backwards ",
-        profilebounce: "profilebounce 1s 3",
-        nav: "nav 1.2s ease-in-out 1 ",
+        profilebounce: "profilebounce 1s 0.7s 1 backwards",
+        nav: "nav 1.2s ease-in-out 0.7s 1 backwards",
+        cart: "nav 1.5s ease-in-out 0.3s 1 backwards",
       },
       colors: {
         Orange: "hsl(26, 100%, 55%)",
