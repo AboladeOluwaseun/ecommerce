@@ -24,7 +24,6 @@ const counterSlice = createSlice({
 const cartSlice = createSlice({
   name: "cartState",
   initialState: {
-    cartItems: 0,
     cart: [],
     totalItemCount: 0,
     itemDetail: {
@@ -70,6 +69,23 @@ const cartSlice = createSlice({
         state.cart = updatedCart;
       }
       state.totalItemCount = state.cart.length;
+    },
+    deleteItemFromList(state, action) {
+      const existingItemIndex = state.cart.findIndex(
+        (item) => item.itemId === action.payload
+      );
+      const existingItem = state.cart[existingItemIndex];
+      console.log(existingItem);
+      if (existingItem.itemId === action.payload) {
+        const newCart = state.cart.filter(
+          (item) => item.itemId !== action.payload
+        );
+        state.cart = newCart;
+      }
+
+      if (state.cart.length === 0) {
+        state.totalItemCount = 0;
+      }
     },
   },
 });

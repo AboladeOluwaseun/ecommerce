@@ -73,7 +73,7 @@ const ProductImages = () => {
             {prodImg}
           </Carousel>
 
-          <ul className="hidden lmd:flex justify-center lg:max-w-[100%] lg:mx-auto  items-center md:space-x-[1.1rem] xxl:space-x-12 space-x-5 xxl:mt-8 mt-4">
+          <ul className="hidden lmd:flex justify-center lg:max-w-[100%] lg:mx-auto  items-center md:space-x-[1.1rem] xxl:space-x-2 space-x-5 xxl:mt-8 mt-4">
             {prodThumb}
           </ul>
         </div>

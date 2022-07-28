@@ -8,13 +8,16 @@ const CartItems = ({ showCart }) => {
   const setShowCartHandler = () => {
     showCart();
   };
+  console.log(cartItems);
   const cartItemsDisplay = cartItems.map((cartItem) => {
+    console.log(cartItem.itemId);
     return (
       <li key={cartItem.itemId} className="mt-4">
         <CartItem
           productName={cartItem.ItemName}
           productPrice={cartItem.price}
           productCount={cartItem.itemAmount}
+          productId={cartItem.itemId}
         ></CartItem>
       </li>
     );
