@@ -69,6 +69,7 @@ const ProductImages = () => {
             showStatus={false}
             showIndicators={false}
             dynamicHeight={true}
+            showArrows={false}
           >
             {prodImg}
           </Carousel>
@@ -78,7 +79,7 @@ const ProductImages = () => {
           </ul>
         </div>
         <img
-          className="absolute lmd:hidden lg:hidden bottom-[45%] right-4 bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
+          className="absolute hidden  bottom-[45%] right-4 bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
           src={next}
           alt=""
         />

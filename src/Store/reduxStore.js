@@ -85,6 +85,7 @@ const cartSlice = createSlice({
 
       if (state.cart.length === 0) {
         state.totalItemCount = 0;
+        state.showCounter = false;
       }
     },
   },

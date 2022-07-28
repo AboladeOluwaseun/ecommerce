@@ -41,9 +41,13 @@ const CartItems = ({ showCart }) => {
           </p>
         )}
 
-        <button className=" active:scale-[1.05]  cursor-pointer border-solid w-[100%] h-[100%] mx-auto text-white rounded-[0.7rem] bg-Orange space-x-3 border-t-black">
-          Checkout
-        </button>
+        {cartItemsCount ? (
+          <button className=" active:scale-[1.05]  cursor-pointer border-solid w-[100%] h-[100%] mx-auto text-white rounded-[0.7rem] bg-Orange space-x-3 border-t-black">
+            Checkout
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
