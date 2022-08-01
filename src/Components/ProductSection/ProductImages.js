@@ -10,78 +10,75 @@ import productThumbnail2 from "../../Assets/ecommerce-product-page-main/images/i
 import productThumbnail3 from "../../Assets/ecommerce-product-page-main/images/image-product-3-thumbnail.jpg";
 import productThumbnail4 from "../../Assets/ecommerce-product-page-main/images/image-product-4-thumbnail.jpg";
 // import Carousel from "react-elastic-carousel";
+import { productImageActions } from "../../Store/reduxStore";
+import { useSelector, useDispatch } from "react-redux";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 
 const ProductImages = () => {
-  const images = [
-    {
-      prodimg: productImage1,
-      prodThumb: productThumbnail1,
-    },
-    {
-      prodimg: productImage2,
-      prodThumb: productThumbnail2,
-    },
-    {
-      prodimg: productImage3,
-      prodThumb: productThumbnail3,
-    },
-    {
-      prodimg: productImage4,
-      prodThumb: productThumbnail4,
-    },
+  const dispatch = useDispatch();
+  const productImageIndex = useSelector(
+    (state) => state.productImageState.productImageIndex
+  );
+
+  const images = [productImage1, productImage2, productImage3, productImage4];
+
+  const productThumbnails = [
+    productThumbnail1,
+    productThumbnail2,
+    productThumbnail3,
+    productThumbnail4,
   ];
 
-  const prodImg = images.map((img, index) => {
+  const setProductImage = (index) => {
+    dispatch(productImageActions.setProductImage(index));
+  };
+
+  const prodThumb = productThumbnails.map((img, index) => {
     return (
-      <img
-        className="md:max-w-[79%] lmd:max-h-[93%] lg:max-h-[72%] md:mx-auto md:rounded-lg  lg:h-[27rem]"
-        src={img.prodimg}
-        alt=""
-        key={index}
-      />
-    );
-  });
-  const prodThumb = images.map((img, index) => {
-    return (
-      <li key={index}>
+      <li key={index} onClick={setProductImage.bind(null, index)}>
         <img
-          className="rounded-lg lg:hover:opacity-80 lg:active:border-2 lg:active:border-solid lg:active:border-Orange cursor-pointer lmd:w-[4.7rem] lmd:h-[4.7rem] lg:w-[5.3rem]  lg:h-[5.3rem] w-[4.5rem] h-[4.5rem] xxl:w-[6rem] xxl:h-[6rem]"
-          src={img.prodThumb}
+          className="w-[90%] h-[90%] xl:w-[75%] xl:h-[75%]  rounded-lg lg:hover:opacity-80 lg:active:border-4 lg:active:border-solid lg:active:border-Orange cursor-pointer"
+          src={img}
           alt=""
         />
       </li>
     );
   });
+  const payload = { productImageIndex, images };
+  const nextDisplayHandler = () => {
+    dispatch(productImageActions.nextProductImage(payload));
+  };
+
+  const prevDisplayHandler = () => {
+    dispatch(productImageActions.prevProductImage(payload));
+  };
 
   return (
     <>
-      <div className="relative  lg:mt-[4rem]">
+      <div className="relative lmd:mt-[5rem]  lg:mt-[4rem]">
         <img
-          className="absolute lmd:hidden lg:hidden top-[45%] left-4 bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
+          className="absolute sm:left-12 lmd:hidden lg:hidden top-[45%] left-[0.8rem] bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
           src={previous}
           alt=""
+          onClick={prevDisplayHandler}
         />
         <div className="lmd:animate-movein ">
-          <Carousel
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={false}
-            dynamicHeight={true}
-            showArrows={false}
-          >
-            {prodImg}
-          </Carousel>
+          <img
+            className="lmd:max-w-[80%] xl:max-w-[75%] sm:mx-auto sm:rounded-lg"
+            src={images[productImageIndex]}
+            alt=""
+          />
 
-          <ul className="hidden lmd:flex justify-center lg:max-w-[100%] lg:mx-auto  items-center md:space-x-[1.1rem] xxl:space-x-2 space-x-5 xxl:mt-8 mt-4">
+          <ul className="hidden xl:mr-11 lmd:flex justify-center lmd:max-w-[80%] lmd:mx-auto  items-center xxl:mt-8 mt-4">
             {prodThumb}
           </ul>
         </div>
         <img
-          className="absolute hidden  bottom-[45%] right-4 bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
+          className="absolute  bottom-[45%] lmd:hidden sm:right-12 right-[0.5rem] bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
           src={next}
           alt=""
+          onClick={nextDisplayHandler}
         />
       </div>
     </>

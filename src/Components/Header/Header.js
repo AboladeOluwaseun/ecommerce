@@ -56,7 +56,7 @@ const Header = () => {
       <SideBar isSidebarOpened={isSidebarOpened}></SideBar>
       {showCart && <CartItems showCart={showCartHandler}></CartItems>}
       <Nav></Nav>
-      <div className=" lmd:animate-profilebounce lmd:hover:animate-profilebounce flex items-center  relative  lg:right-[1rem] md:shrink-0 space-x-5">
+      <div className=" lmd:animate-profilebounce lmd:hover:animate-profilebounce flex items-center  relative  lmd:right-[2rem] md:shrink-0 space-x-5">
         <div
           onClick={showCartHandler}
           className="active:scale-125 relative cursor-pointer"

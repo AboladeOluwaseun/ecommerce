@@ -34,7 +34,7 @@ const CartItems = ({ showCart }) => {
           Cart
         </p>
         {cartItemsCount ? (
-          <ul className="max-h-[65%]  overflow-auto">{cartItemsDisplay}</ul>
+          <ul className="max-h-[80%]  overflow-auto">{cartItemsDisplay}</ul>
         ) : (
           <p className=" relative top-[35%] text-gray-400 text-center">
             Your Cart is empty

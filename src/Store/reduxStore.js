@@ -1,6 +1,5 @@
 // import { legacy_createStore as createStore } from "redux";
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-
 const initialState = { counter: 0 };
 const counterSlice = createSlice({
   name: "counter",
@@ -91,6 +90,29 @@ const cartSlice = createSlice({
   },
 });
 
+const productImageSlice = createSlice({
+  name: "productImageState",
+  initialState: {
+    productImageIndex: 0,
+  },
+  reducers: {
+    nextProductImage(state, action) {
+      if (action.payload.productImageIndex < action.payload.images.length - 1) {
+        state.productImageIndex = action.payload.productImageIndex + 1;
+        console.log(state.productImageIndex);
+      }
+    },
+    prevProductImage(state, action) {
+      if (action.payload.productImageIndex > 0) {
+        state.productImageIndex = action.payload.productImageIndex - 1;
+      }
+    },
+    setProductImage(state, action) {
+      state.productImageIndex = action.payload;
+    },
+  },
+});
+
 // ######REDUX without toolkit
 // const initialState = { counter: 0 };
 // const reducer = (state = initialState, action) => {
@@ -115,8 +137,13 @@ const cartSlice = createSlice({
 // };
 export const counterActions = counterSlice.actions;
 export const cartActions = cartSlice.actions;
+export const productImageActions = productImageSlice.actions;
 const store = configureStore({
-  reducer: { counter: counterSlice.reducer, cartState: cartSlice.reducer },
+  reducer: {
+    counter: counterSlice.reducer,
+    cartState: cartSlice.reducer,
+    productImageState: productImageSlice.reducer,
+  },
 });
 
 export default store;
