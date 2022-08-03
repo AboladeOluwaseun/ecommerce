@@ -110,6 +110,12 @@ const productImageSlice = createSlice({
     setProductImage(state, action) {
       state.productImageIndex = action.payload;
     },
+    infiniteDisplay(state, action) {
+      if (state.productImageIndex === action.payload.images.length) {
+        state.productImageIndex = 0;
+      } else state.productImageIndex = action.payload.productImageIndex++;
+      // console.log(state.productImageIndex);
+    },
   },
 });
 

@@ -30,7 +30,7 @@ const ProductInfo = () => {
     return (
       <div
         key={product.id}
-        className="w-[80%] mt-8 md:w-[75%] lmd:mt-16 lg:mt-18 xxl:mt-36 lmd:max-h-[90%]  lmd:animate-productinfo mx-auto sm:w-[80%]  "
+        className="w-[80%]  mt-8 md:w-[75%] lmd:mt-16 lg:mt-18 xxl:mt-36 lmd:max-h-[90%]  lmd:animate-productinfo mx-auto sm:w-[70%]  "
       >
         <p className="text-Orange text-[0.9rem] md:relative md:top-7 tracking-widest ">
           SNEAKER COMPANY

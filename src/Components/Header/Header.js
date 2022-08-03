@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <div className="shadow-[0_5px_0px_-15px_rgba(0,0,0,0.3)] lmd:animate-nav container max-w-[90%] py-[0.8rem] md:py-8 mx-auto sm:py-6 flex items-center border-b-slate-400 border-b justify-between">
+    <div className="shadow-[0_5px_0px_-15px_rgba(0,0,0,0.3)] lmd:animate-nav container max-w-[90%] py-[0.8rem] md:py-8 lmd:py-[0.4rem] mx-auto sm:py-6 flex items-center border-b-slate-400 border-b justify-between">
       {active ? (
         <div
           onClick={setMenu}

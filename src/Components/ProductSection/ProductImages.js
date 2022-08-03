@@ -14,8 +14,18 @@ import { productImageActions } from "../../Store/reduxStore";
 import { useSelector, useDispatch } from "react-redux";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useEffect } from "react";
+
+import { useRef } from "react";
 
 const ProductImages = () => {
+  const setTimeOutRef = useRef(null);
+  const timeOutReset = () => {
+    if (setTimeOutRef.current) {
+      clearTimeout(setTimeOutRef.current);
+    }
+  };
+
   const dispatch = useDispatch();
   const productImageIndex = useSelector(
     (state) => state.productImageState.productImageIndex
@@ -38,7 +48,11 @@ const ProductImages = () => {
     return (
       <li key={index} onClick={setProductImage.bind(null, index)}>
         <img
-          className="w-[90%] h-[90%] xl:w-[75%] xl:h-[75%]  rounded-lg lg:hover:opacity-80 lg:active:border-4 lg:active:border-solid lg:active:border-Orange cursor-pointer"
+          className={`w-[90%] h-[90%] xl:w-[75%] xl:h-[75%] ${
+            productImageIndex === index
+              ? "sm:active:border-4 sm:active:border-solid sm:active:border-Orange"
+              : ""
+          } rounded-lg sm:hover:opacity-80  cursor-pointer`}
           src={img}
           alt=""
         />
@@ -53,6 +67,17 @@ const ProductImages = () => {
   const prevDisplayHandler = () => {
     dispatch(productImageActions.prevProductImage(payload));
   };
+  const dispactchvar = dispatch(productImageActions.infiniteDisplay(payload));
+  useEffect(() => {
+    setTimeOutRef.current = setTimeout(() => {
+      console.log(productImageIndex);
+      dispatch(productImageActions.infiniteDisplay(payload));
+    }, 2500);
+
+    return () => {
+      timeOutReset();
+    };
+  }, [dispactchvar]);
 
   return (
     <>
@@ -65,12 +90,12 @@ const ProductImages = () => {
         />
         <div className="lmd:animate-movein ">
           <img
-            className="lmd:max-w-[80%] xl:max-w-[75%] sm:mx-auto sm:rounded-lg"
+            className="sm:max-w-[75%] lmd:max-w-[80%] xl:max-w-[75%] sm:mx-auto sm:rounded-lg"
             src={images[productImageIndex]}
             alt=""
           />
 
-          <ul className="hidden xl:mr-11 lmd:flex justify-center lmd:max-w-[80%] lmd:mx-auto  items-center xxl:mt-8 mt-4">
+          <ul className="hidden xl:mr-11 sm:max-w-[75%] sm:mx-auto sm:flex justify-center lmd:max-w-[80%] lmd:mx-auto  items-center xxl:mt-8 mt-4">
             {prodThumb}
           </ul>
         </div>
