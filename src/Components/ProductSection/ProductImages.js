@@ -50,9 +50,9 @@ const ProductImages = () => {
         <img
           className={`w-[90%] h-[90%] xl:w-[75%] xl:h-[75%] ${
             productImageIndex === index
-              ? "sm:active:border-4 sm:active:border-solid sm:active:border-Orange"
+              ? "sm:border-4 sm:opacity-80 sm:border-solid sm:border-Orange"
               : ""
-          } rounded-lg sm:hover:opacity-80  cursor-pointer`}
+          } rounded-lg   cursor-pointer`}
           src={img}
           alt=""
         />
