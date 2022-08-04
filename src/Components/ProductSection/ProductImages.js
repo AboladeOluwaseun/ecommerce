@@ -70,7 +70,6 @@ const ProductImages = () => {
   const dispactchvar = dispatch(productImageActions.infiniteDisplay(payload));
   useEffect(() => {
     setTimeOutRef.current = setTimeout(() => {
-      console.log(productImageIndex);
       dispatch(productImageActions.infiniteDisplay(payload));
     }, 2500);
 
