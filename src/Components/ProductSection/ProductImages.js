@@ -52,7 +52,7 @@ const ProductImages = () => {
             productImageIndex === index
               ? "sm:border-4 sm:opacity-80 sm:border-solid sm:border-Orange"
               : ""
-          } rounded-lg   cursor-pointer`}
+          } rounded-lg cursor-pointer`}
           src={img}
           alt=""
         />
@@ -81,9 +81,9 @@ const ProductImages = () => {
 
   return (
     <>
-      <div className="relative lmd:mt-[5rem]  lg:mt-[4rem]">
+      <div className="relative lmd:mt-[5rem]   lg:mt-[4rem]">
         <img
-          className="absolute sm:left-12 lmd:hidden lg:hidden top-[45%] left-[0.8rem] bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
+          className="absolute w-16 h-16 sm:left-28 lmd:hidden lg:hidden top-[40%] left-[0.8rem] bg-white cursor-pointer py-[1.3rem] px-[1.6rem] rounded-full "
           src={previous}
           alt=""
           onClick={prevDisplayHandler}
@@ -100,7 +100,7 @@ const ProductImages = () => {
           </ul>
         </div>
         <img
-          className="absolute  bottom-[45%] lmd:hidden sm:right-12 right-[0.5rem] bg-white cursor-pointer py-[0.8rem] px-[1rem] rounded-full "
+          className="absolute w-16 h-16 sm:bottom-[48%] bottom-[42%] lmd:hidden sm:right-28 right-[0.5rem] bg-white cursor-pointer py-[1.2rem] px-[1.4rem] rounded-full "
           src={next}
           alt=""
           onClick={nextDisplayHandler}
