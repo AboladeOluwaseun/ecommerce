@@ -28,7 +28,7 @@ const CartItem = ({ productName, productPrice, productCount, productId }) => {
           </div>
           <div
             onClick={deleteItemHandler}
-            className="cursor-pointer  active:scale-[1.1]"
+            className="cursor-pointer mr-8  active:scale-[1.1]"
           >
             <img src={deleteIcon} alt="delete" />
           </div>
